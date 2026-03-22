@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCore Resonance Emulator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      min-height: 100vh;
+      padding: 2rem 1rem;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 1.6rem;
+      color: #58a6ff;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #8b949e;
+      margin-bottom: 1.5rem;
+    }
+
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 1.25rem;
+      max-width: 820px;
+      margin: 0 auto 1rem;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    label { font-size: 0.9rem; color: #8b949e; white-space: nowrap; }
+
+    input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.5rem 0.75rem;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #c9d1d9;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus { border-color: #58a6ff; }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    input[type="checkbox"] { accent-color: #58a6ff; width: 16px; height: 16px; cursor: pointer; }
+
+    button {
+      padding: 0.5rem 1.25rem;
+      background: #238636;
+      border: 1px solid #2ea043;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+
+    button:hover { background: #2ea043; }
+    button:disabled { background: #21262d; border-color: #30363d; color: #6e7681; cursor: not-allowed; }
+
+    .state-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 0.75rem;
+    }
+
+    .state-CON  { background: #1a4731; color: #3fb950; border: 1px solid #238636; }
+    .state-DIV  { background: #4a1515; color: #f85149; border: 1px solid #cf222e; }
+    .state-RET  { background: #1a2e52; color: #79c0ff; border: 1px solid #1f6feb; }
+    .state-OFF  { background: #3d2800; color: #e3b341; border: 1px solid #9e6a03; }
+    .state-NEU  { background: #2b1d3e; color: #d2a8ff; border: 1px solid #8957e5; }
+    .state-ANOM { background: #21262d; color: #8b949e; border: 1px solid #484f58; }
+
+    .section-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #8b949e;
+      margin-bottom: 0.5rem;
+    }
+
+    textarea {
+      width: 100%;
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #c9d1d9;
+      font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.82rem;
+      padding: 0.6rem 0.75rem;
+      resize: vertical;
+      outline: none;
+    }
+
+    textarea:focus { border-color: #30363d; }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 600px) { .results-grid { grid-template-columns: 1fr; } }
+
+    .error {
+      color: #f85149;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .loading {
+      text-align: center;
+      color: #8b949e;
+      font-size: 0.9rem;
+      padding: 1rem;
+    }
+
+    .stabilizer { color: #3fb950; }
+    .destabilizer { color: #f85149; }
+    .neutral-pair { color: #e3b341; }
+  </style>
+</head>
+<body>
+
+<h1>⚛ QCore Resonance Emulator</h1>
+<p class="subtitle">Law of Harmonic Resonance + Stabilizer Engine — v0.7</p>
+
+<div class="card">
+  <div class="input-row">
+    <label for="formula">Formula:</label>
+    <input type="text" id="formula" placeholder="e.g. H2O, NaCl, TiO2, Fe2O3" autocomplete="off" spellcheck="false" />
+    <label class="checkbox-label">
+      <input type="checkbox" id="phi2" checked />
+      Use ϕ²
+    </label>
+    <button id="evalBtn" disabled>Evaluate</button>
+  </div>
+  <div id="errorMsg" class="error" style="display:none;"></div>
+  <div id="finalState" style="margin-top:0.5rem; display:none;">
+    <span class="section-title">Final State:</span><br/>
+    <span id="stateBadge" class="state-badge">—</span>
+  </div>
+</div>
+
+<div id="loadingMsg" class="loading">Loading element data…</div>
+
+<div id="resultsSection" style="display:none;">
+  <div class="card">
+    <div class="section-title">Element Frequencies &amp; States</div>
+    <textarea id="freqBox" rows="10" readonly></textarea>
+  </div>
+
+  <div class="card">
+    <div class="results-grid">
+      <div>
+        <div class="section-title">Pair Compatibility</div>
+        <textarea id="destBox" rows="12" readonly></textarea>
+      </div>
+      <div>
+        <div class="section-title">Legend</div>
+        <textarea rows="12" readonly style="color:#8b949e;">States:
+  CON  = Convergence (yes)
+  DIV  = Divergence (no)
+  RET  = Return (could be)
+  OFF  = Offset (maybe)
+  NEU  = Neutral
+  ANOM = Anomaly (huh?)
+
+Pair labels:
+  STABILIZER   = compatible pair
+  NEUTRAL      = neither
+  DESTABILIZER = incompatible pair
+
+ϕ² mode uses phi-squared
+scaled resonance frequencies.</textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CSV parser — quote-aware, handles fields containing commas
+// ============================================================
+function splitCSVLine(line) {
+  const fields = [];
+  let field = '';
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i + 1] === '"') { field += '"'; i++; }
+      else { inQuotes = !inQuotes; }
+    } else if (ch === ',' && !inQuotes) {
+      fields.push(field.trim());
+      field = '';
+    } else {
+      field += ch;
+    }
+  }
+  fields.push(field.trim());
+  return fields;
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = splitCSVLine(lines[0]);
+  return lines.slice(1).map(line => {
+    const vals = splitCSVLine(line);
+    const obj = {};
+    headers.forEach((h, i) => { obj[h] = (vals[i] || '').trim(); });
+    return obj;
+  });
+}
+
+// ============================================================
+// Load + merge CSVs
+// ============================================================
+let FREQS = {};
+
+async function loadData() {
+  const [freqRes, metaRes] = await Promise.all([
+    fetch('resonance_phi2_results.csv'),
+    fetch('Res_csv.csv')
+  ]);
+  const freqRows = parseCSV(await freqRes.text());
+  const metaRows = parseCSV(await metaRes.text());
+
+  const freqMap = {};
+  for (const row of freqRows) {
+    const sym = row['Symbol'].charAt(0).toUpperCase() + row['Symbol'].slice(1).toLowerCase();
+    freqMap[sym] = {
+      f_std:  parseFloat(row['f_std_Hz']  || 0),
+      f_phi2: parseFloat(row['f_phi2_Hz'] || 0)
+    };
+  }
+
+  for (const row of metaRows) {
+    const sym = row['Symbol'].charAt(0).toUpperCase() + row['Symbol'].slice(1).toLowerCase();
+    const f = freqMap[sym] || { f_std: 0, f_phi2: 0 };
+    FREQS[sym] = {
+      Element:          row['Element'] || '',
+      Category:        (row['Category'] || 'NEU').trim().toUpperCase(),
+      Type:             row['Type'] || '',
+      Phase:            row['Phase'] || '',
+      AtomicRadius:     row['AtomicRadius'] || '',
+      Electronegativity:row['Electronegativity'] || '',
+      MeltingPoint_K:   row['MeltingPoint'] || row['MeltingPoint_K'] || '',
+      BoilingPoint_K:   row['BoilingPoint'] || row['BoilingPoint_K'] || '',
+      Density_gcc:      row['Density'] || row['Density_gcc'] || '',
+      f_std:  f.f_std,
+      f_phi2: f.f_phi2,
+      state: (row['Category'] || 'NEU').trim().toUpperCase()
+    };
+  }
+}
+
+// ============================================================
+// Formula parser  (handles nested groups + multipliers)
+// ============================================================
+function parseFormula(formula) {
+  formula = formula.replace(/\s+/g, '');
+  const stack = [{}];
+  let i = 0;
+  while (i < formula.length) {
+    if (/[A-Z]/.test(formula[i])) {
+      let elem = formula[i++];
+      if (i < formula.length && /[a-z]/.test(formula[i])) elem += formula[i++];
+      let count = 0;
+      while (i < formula.length && /\d/.test(formula[i])) count = count * 10 + parseInt(formula[i++]);
+      const top = stack[stack.length - 1];
+      top[elem] = (top[elem] || 0) + Math.max(count, 1);
+    } else if ('([{'.includes(formula[i])) {
+      stack.push({});
+      i++;
+    } else if (')]}'.includes(formula[i])) {
+      i++;
+      let count = 0;
+      while (i < formula.length && /\d/.test(formula[i])) count = count * 10 + parseInt(formula[i++]);
+      const group = stack.pop();
+      const top = stack[stack.length - 1];
+      for (const k in group) top[k] = (top[k] || 0) + group[k] * Math.max(count, 1);
+    } else {
+      i++;
+    }
+  }
+  return stack[0];
+}
+
+// ============================================================
+// Resonance state reduction
+// ============================================================
+function stateTransition(s1, s2) {
+  if (s1 === 'NEU') return s2;
+  if (s2 === 'NEU') return s1;
+  if (s1 === 'ANOM' || s2 === 'ANOM') return 'ANOM';
+  return 'NEU';
+}
+
+function reduceStates(states) {
+  if (!states.length) return 'NEU';
+  return states.reduce((acc, s) => stateTransition(acc, s));
+}
+
+// ============================================================
+// Pair scoring
+// ============================================================
+const PAIR_RULES = {
+  radius_close_pm: 30,
+  en_close: 0.5,
+  en_too_far: 2.5,
+  score_stabilize: 2,
+  score_destabilize: -2
+};
+
+function tryFloat(x) {
+  const v = parseFloat(x);
+  return isNaN(v) ? null : v;
+}
+
+function scorePair(e1, e2) {
+  let score = 0;
+  const reasons = [];
+
+  const r1 = tryFloat(e1.AtomicRadius), r2 = tryFloat(e2.AtomicRadius);
+  if (r1 !== null && r2 !== null) {
+    const dr = Math.abs(r1 - r2);
+    if (dr <= PAIR_RULES.radius_close_pm) {
+      score += 1; reasons.push(`Δradius=${dr.toFixed(0)}pm +1`);
+    } else if (dr >= 2 * PAIR_RULES.radius_close_pm) {
+      score -= 1; reasons.push(`Δradius=${dr.toFixed(0)}pm −1`);
+    }
+  }
+
+  const en1 = tryFloat(e1.Electronegativity), en2 = tryFloat(e2.Electronegativity);
+  if (en1 !== null && en2 !== null) {
+    const den = Math.abs(en1 - en2);
+    if (den <= PAIR_RULES.en_close) {
+      score += 1; reasons.push(`ΔEN=${den.toFixed(2)} +1`);
+    } else if (den > PAIR_RULES.en_too_far) {
+      score -= 2; reasons.push(`ΔEN=${den.toFixed(2)} −2`);
+    }
+  }
+
+  let label = 'NEUTRAL';
+  if (score >= PAIR_RULES.score_stabilize) label = 'STABILIZER';
+  else if (score <= PAIR_RULES.score_destabilize) label = 'DESTABILIZER';
+  return { label, score, reasons };
+}
+
+// ============================================================
+// Main evaluate
+// ============================================================
+function formatHz(v) {
+  if (v === 0) return '0.000e+0';
+  return v.toExponential(3);
+}
+
+function evaluate() {
+  const expr = document.getElementById('formula').value.trim();
+  const usePhi2 = document.getElementById('phi2').checked;
+  const errorEl = document.getElementById('errorMsg');
+  errorEl.style.display = 'none';
+
+  let counts;
+  try {
+    counts = parseFormula(expr);
+  } catch (e) {
+    errorEl.textContent = 'Parse error: ' + e.message;
+    errorEl.style.display = '';
+    return;
+  }
+
+  if (!Object.keys(counts).length) {
+    errorEl.textContent = 'Please enter a valid chemical formula (e.g. H2O, NaCl).';
+    errorEl.style.display = '';
+    return;
+  }
+
+  const lines = [];
+  const allStates = [];
+  const symbols = [];
+
+  for (const [sym, n] of Object.entries(counts)) {
+    const capSym = sym.charAt(0).toUpperCase() + sym.slice(1).toLowerCase();
+    const info = FREQS[capSym];
+    if (!info) {
+      lines.push(`${capSym} ×${n} → not found`);
+      continue;
+    }
+    const fval = usePhi2 ? info.f_phi2 : info.f_std;
+    lines.push(`${capSym} x${n}  ->  ${formatHz(fval)} Hz  |  State: ${info.state}`);
+    for (let k = 0; k < n; k++) {
+      allStates.push(info.state);
+      symbols.push(capSym);
+    }
+  }
+
+  const final = reduceStates(allStates);
+
+  // Update final state badge
+  const badge = document.getElementById('stateBadge');
+  const stateLabels = {
+    CON: 'CON — Convergence (yes)',
+    DIV: 'DIV — Divergence (no)',
+    RET: 'RET — Return (could be)',
+    OFF: 'OFF — Offset (maybe)',
+    NEU: 'NEU — Neutral',
+    ANOM: 'ANOM — Anomaly (huh?)'
+  };
+  badge.textContent = stateLabels[final] || final;
+  badge.className = 'state-badge state-' + final;
+  document.getElementById('finalState').style.display = '';
+
+  document.getElementById('freqBox').value = lines.join('\n');
+
+  // Pair analysis
+  const stab = [], neu = [], dest = [];
+  const seen = new Set();
+  for (let i = 0; i < symbols.length; i++) {
+    for (let j = i + 1; j < symbols.length; j++) {
+      const a = symbols[i], b = symbols[j];
+      const key = [a, b].sort().join('-');
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const e1 = FREQS[a], e2 = FREQS[b];
+      if (!e1 || !e2) continue;
+      const { label, score, reasons } = scorePair(e1, e2);
+      const line = `${a}-${b}: ${label} (${score}) — ${reasons.join('; ') || 'no scored criteria'}`;
+      if (label === 'STABILIZER') stab.push(line);
+      else if (label === 'DESTABILIZER') dest.push(line);
+      else neu.push(line);
+    }
+  }
+
+  let pairText = '';
+  if (stab.length) pairText += 'STABILIZERS:\n' + stab.join('\n') + '\n\n';
+  if (neu.length)  pairText += 'NEUTRAL:\n'     + neu.join('\n')  + '\n\n';
+  if (dest.length) pairText += 'DESTABILIZERS:\n' + dest.join('\n');
+  if (!pairText) pairText = symbols.length < 2 ? '(need at least 2 elements for pair analysis)' : '(no pairs scored)';
+
+  document.getElementById('destBox').value = pairText.trim();
+  document.getElementById('resultsSection').style.display = '';
+}
+
+// ============================================================
+// Bootstrap
+// ============================================================
+(async () => {
+  const loadingEl = document.getElementById('loadingMsg');
+  const evalBtn = document.getElementById('evalBtn');
+  try {
+    await loadData();
+    loadingEl.style.display = 'none';
+    evalBtn.disabled = false;
+  } catch (err) {
+    loadingEl.textContent = 'Error loading data: ' + err.message;
+    loadingEl.style.color = '#f85149';
+    return;
+  }
+
+  evalBtn.addEventListener('click', evaluate);
+  document.getElementById('formula').addEventListener('keydown', e => {
+    if (e.key === 'Enter') evaluate();
+  });
+})();
+</script>
+</body>
+</html>
