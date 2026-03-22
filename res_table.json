@@ -1,0 +1,1776 @@
+[
+  {
+  "H": {
+    "element": "Hydrogen",
+    "symbol": "H",
+    "atomicNumber": 1,
+    "category": "Attractor",
+    "behavior": "Convergent anchor",
+    "notes": "Stable noble gas, Forms stable bonds, core to organic molecules",
+    "atomicMass": 1.008,
+    "isotopes": ["H-1", "H-2 (D)", "H-3 (T)"],
+    "spectra": {
+      "emission": [1.42e9],         
+      "absorption": [121.6e-9],     
+      "references": ["NIST ASD"]
+    }
+  },
+  "He": {
+    "element": "Helium",
+    "symbol": "He",
+    "atomicNumber": 2,
+    "category": "Neutral",
+    "behavior": "Inert, minimal resonance",
+    "notes": "Stable noble gas, weak interactions",
+    "atomicMass": 4.0026,
+    "isotopes": ["He-3", "He-4"],
+    "spectra": {
+      "emission": [5.01e14],        
+      "absorption": [],
+      "references": ["NIST ASD"]
+    }
+  },
+  "Li": {
+    "element": "Lithium",
+    "symbol": "Li",
+    "atomicNumber": 3,
+    "category": "Offset",
+    "behavior": "Reactive metal, weak stabilizer",
+    "notes": "Useful in batteries, resonance offset",
+    "atomicMass": 6.94,
+    "isotopes": ["Li-6", "Li-7"],
+    "spectra": {
+      "emission": [6.7e14],         
+      "absorption": [],
+      "references": ["NIST ASD"]
+    }
+  },
+  "Be": {
+    "element": "Beryllium",
+    "symbol": "Be",
+    "atomicNumber": 4,
+    "category": "Offset",
+    "behavior": "Alkaline earth, partial stabilizer",
+    "notes": "Toxic, limited biological use",
+    "atomicMass": 9.0122,
+    "isotopes": ["Be-9"],
+    "spectra": {
+      "emission": [],
+      "absorption": [],
+      "references": []
+    }
+  },
+  "B": {
+    "element": "Boron",
+    "symbol": "B",
+    "atomicNumber": 5,
+    "category": "Attractor",
+    "behavior": "Convergent anchor",
+    "notes": "Key in glass and semiconductors",
+    "atomicMass": 10.81,
+    "isotopes": ["B-10", "B-11"],
+    "spectra": {
+      "emission": [],
+      "absorption": [],
+      "references": []
+    }
+  },
+  "C": {
+    "element": "Carbon",
+    "symbol": "C",
+    "atomicNumber": 6,
+    "category": "Attractor",
+    "behavior": "Convergent anchor",
+    "notes": "Basis of organic chemistry",
+    "atomicMass": 12.011,
+    "isotopes": ["C-12", "C-13", "C-14"],
+    "spectra": {
+      "emission": [4.7e14],        
+      "absorption": [11.3e-6],     
+      "references": ["NIST ASD"]
+    }
+  },
+  "N": {
+    "element": "Nitrogen",
+    "symbol": "N",
+    "atomicNumber": 7,
+    "category": "Attractor",
+    "behavior": "Convergent anchor",
+    "notes": "Major component of atmosphere",
+    "atomicMass": 14.007,
+    "isotopes": ["N-14", "N-15"],
+    "spectra": {
+      "emission": [4.4e14],
+      "absorption": [214e-9],
+      "references": ["NIST ASD"]
+    }
+  },
+  "O": {
+    "element": "Oxygen",
+    "symbol": "O",
+    "atomicNumber": 8,
+    "category": "Divergent",
+    "behavior": "Divergent lever",
+    "notes": "Drives combustion, destabilizer",
+    "atomicMass": 15.999,
+    "isotopes": ["O-16", "O-17", "O-18"],
+    "spectra": {
+      "emission": [5.2e14],
+      "absorption": [760e-9],
+      "references": ["NIST ASD"]
+    }
+  },
+  "F": {
+    "element": "Fluorine",
+    "symbol": "F",
+    "atomicNumber": 9,
+    "category": "Attractor",
+    "behavior": "Strong convergent anchor",
+    "notes": "Most electronegative element",
+    "atomicMass": 18.998,
+    "isotopes": ["F-19"],
+    "spectra": {
+      "emission": [],
+      "absorption": [],
+      "references": []
+    }
+  },
+  "Ne": {
+    "element": "Neon",
+    "symbol": "Ne",
+    "atomicNumber": 10,
+    "category": "Neutral",
+    "behavior": "Inert, weak resonance",
+    "notes": "Noble gas, used in lighting",
+    "atomicMass": 20.180,
+    "isotopes": ["Ne-20", "Ne-21", "Ne-22"],
+    "spectra": {
+      "emission": [4.86e14],
+      "absorption": [],
+      "references": ["NIST ASD"]
+    }
+  },
+ "Na": {
+  "element": "Sodium",
+  "symbol": "Na",
+  "atomicNumber": 11,
+  "category": "Offset",
+  "behavior": "Reactive offset",
+  "notes": "Highly reactive alkali metal, stabilizes via salts",
+  "atomicMass": 22.990,
+  "isotopes": ["Na-23"],
+  "spectra": {
+    "emission": [5.09e14],        
+    "absorption": [589e-9],       
+    "references": ["NIST ASD"]
+  }
+},
+"Mg": {
+  "element": "Magnesium",
+  "symbol": "Mg",
+  "atomicNumber": 12,
+  "category": "Divergent",
+  "behavior": "Divergent lever",
+  "notes": "Biological cofactor, destabilizes in excess",
+  "atomicMass": 24.305,
+  "isotopes": ["Mg-24", "Mg-25", "Mg-26"],
+  "spectra": {
+    "emission": [6.0e14],         
+    "absorption": [285e-9],       
+    "references": ["NIST ASD"]
+  }
+},
+"Al": {
+  "element": "Aluminum",
+  "symbol": "Al",
+  "atomicNumber": 13,
+  "category": "Offset",
+  "behavior": "Partial stabilizer",
+  "notes": "Common in Earth’s crust, resonance offset",
+  "atomicMass": 26.982,
+  "isotopes": ["Al-27"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Si": {
+  "element": "Silicon",
+  "symbol": "Si",
+  "atomicNumber": 14,
+  "category": "Offset",
+  "behavior": "Semiconducting offset",
+  "notes": "Basis of electronics, structural resonance",
+  "atomicMass": 28.085,
+  "isotopes": ["Si-28", "Si-29", "Si-30"],
+  "spectra": {
+    "emission": [8.0e13],         
+    "absorption": [9.0e-6],       
+    "references": ["NIST ASD"]
+  }
+},
+"P": {
+  "element": "Phosphorus",
+  "symbol": "P",
+  "atomicNumber": 15,
+  "category": "Offset",
+  "behavior": "Resonance offset",
+  "notes": "DNA backbone element, reactive offset",
+  "atomicMass": 30.974,
+  "isotopes": ["P-31"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"S": {
+  "element": "Sulfur",
+  "symbol": "S",
+  "atomicNumber": 16,
+  "category": "Offset",
+  "behavior": "Partial offset",
+  "notes": "Biological sulfur bonds, resonance offset",
+  "atomicMass": 32.06,
+  "isotopes": ["S-32", "S-33", "S-34", "S-36"],
+  "spectra": {
+    "emission": [5.3e14],
+    "absorption": [280e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Cl": {
+  "element": "Chlorine",
+  "symbol": "Cl",
+  "atomicNumber": 17,
+  "category": "Offset",
+  "behavior": "Reactive offset, stabilizes via salts",
+  "notes": "Key in ionic regulation",
+  "atomicMass": 35.45,
+  "isotopes": ["Cl-35", "Cl-37"],
+  "spectra": {
+    "emission": [5.7e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+},
+"Ar": {
+  "element": "Argon",
+  "symbol": "Ar",
+  "atomicNumber": 18,
+  "category": "Neutral",
+  "behavior": "Inert neutral",
+  "notes": "Noble gas, minimal resonance",
+  "atomicMass": 39.948,
+  "isotopes": ["Ar-36", "Ar-38", "Ar-40"],
+  "spectra": {
+    "emission": [6.5e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+},
+"K": {
+  "element": "Potassium",
+  "symbol": "K",
+  "atomicNumber": 19,
+  "category": "Offset",
+  "behavior": "Alkali metal, reactive offset",
+  "notes": "Essential nutrient, ion channel regulator",
+  "atomicMass": 39.098,
+  "isotopes": ["K-39", "K-40", "K-41"],
+  "spectra": {
+    "emission": [3.9e14],       
+    "absorption": [766e-9, 770e-9], 
+    "references": ["NIST ASD"]
+  }
+},
+"Ca": {
+  "element": "Calcium",
+  "symbol": "Ca",
+  "atomicNumber": 20,
+  "category": "Return",
+  "behavior": "Return stabilizer",
+  "notes": "Biological signaling ion, structural stabilizer",
+  "atomicMass": 40.078,
+  "isotopes": ["Ca-40", "Ca-42", "Ca-44"],
+  "spectra": {
+    "emission": [4.9e14],
+    "absorption": [393e-9, 397e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Sc": {
+  "element": "Scandium",
+  "symbol": "Sc",
+  "atomicNumber": 21,
+  "category": "Offset",
+  "behavior": "Transition offset",
+  "notes": "Rare, stabilizing alloy component",
+  "atomicMass": 44.956,
+  "isotopes": ["Sc-45"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ti": {
+  "element": "Titanium",
+  "symbol": "Ti",
+  "atomicNumber": 22,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Strong structural anchor, used in biocompatible alloys",
+  "atomicMass": 47.867,
+  "isotopes": ["Ti-46", "Ti-47", "Ti-48", "Ti-49", "Ti-50"],
+  "spectra": {
+    "emission": [4.5e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+},
+"V": {
+  "element": "Vanadium",
+  "symbol": "V",
+  "atomicNumber": 23,
+  "category": "Offset",
+  "behavior": "Reactive offset",
+  "notes": "Catalyst, multiple oxidation states",
+  "atomicMass": 50.942,
+  "isotopes": ["V-50", "V-51"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Cr": {
+  "element": "Chromium",
+  "symbol": "Cr",
+  "atomicNumber": 24,
+  "category": "Offset",
+  "behavior": "Partial stabilizer",
+  "notes": "Hard metal, corrosion resistant",
+  "atomicMass": 51.996,
+  "isotopes": ["Cr-50", "Cr-52", "Cr-53", "Cr-54"],
+  "spectra": {
+    "emission": [5.2e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Mn": {
+  "element": "Manganese",
+  "symbol": "Mn",
+  "atomicNumber": 25,
+  "category": "Offset",
+  "behavior": "Biometal, catalytic offset",
+  "notes": "Cofactor in enzymes, resonance offset",
+  "atomicMass": 54.938,
+  "isotopes": ["Mn-55"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Fe": {
+  "element": "Iron",
+  "symbol": "Fe",
+  "atomicNumber": 26,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Core of hemoglobin, strong resonance anchor",
+  "atomicMass": 55.845,
+  "isotopes": ["Fe-54", "Fe-56", "Fe-57", "Fe-58"],
+  "spectra": {
+    "emission": [5.3e14],
+    "absorption": [372e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Co": {
+  "element": "Cobalt",
+  "symbol": "Co",
+  "atomicNumber": 27,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Magnetic, catalytic, biological vitamin B12 core",
+  "atomicMass": 58.933,
+  "isotopes": ["Co-59"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ni": {
+  "element": "Nickel",
+  "symbol": "Ni",
+  "atomicNumber": 28,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Magnetic, alloy stabilizer",
+  "atomicMass": 58.693,
+  "isotopes": ["Ni-58", "Ni-60", "Ni-61", "Ni-62", "Ni-64"],
+  "spectra": {
+    "emission": [6.0e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Cu": {
+  "element": "Copper",
+  "symbol": "Cu",
+  "atomicNumber": 29,
+  "category": "Offset",
+  "behavior": "Reactive offset, conductor",
+  "notes": "Key electrical conductor, catalytic offset",
+  "atomicMass": 63.546,
+  "isotopes": ["Cu-63", "Cu-65"],
+  "spectra": {
+    "emission": [5.8e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+},
+"Zn": {
+  "element": "Zinc",
+  "symbol": "Zn",
+  "atomicNumber": 30,
+  "category": "Offset",
+  "behavior": "Resonant offset",
+  "notes": "Biometal in enzymes, resonance offset",
+  "atomicMass": 65.38,
+  "isotopes": ["Zn-64", "Zn-66", "Zn-67", "Zn-68", "Zn-70"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ga": {
+  "element": "Gallium",
+  "symbol": "Ga",
+  "atomicNumber": 31,
+  "category": "Offset",
+  "behavior": "Semiconducting offset",
+  "notes": "Used in electronics, resonance offset",
+  "atomicMass": 69.723,
+  "isotopes": ["Ga-69", "Ga-71"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ge": {
+  "element": "Germanium",
+  "symbol": "Ge",
+  "atomicNumber": 32,
+  "category": "Offset",
+  "behavior": "Semiconducting offset",
+  "notes": "Electronics, resonance offset",
+  "atomicMass": 72.630,
+  "isotopes": ["Ge-70", "Ge-72", "Ge-73", "Ge-74", "Ge-76"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"As": {
+  "element": "Arsenic",
+  "symbol": "As",
+  "atomicNumber": 33,
+  "category": "Offset",
+  "behavior": "Toxic offset",
+  "notes": "Semimetal, toxic disruptor",
+  "atomicMass": 74.922,
+  "isotopes": ["As-75"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Se": {
+  "element": "Selenium",
+  "symbol": "Se",
+  "atomicNumber": 34,
+  "category": "Offset",
+  "behavior": "Photoreactive offset",
+  "notes": "Photovoltaic applications, antioxidant biology",
+  "atomicMass": 78.971,
+  "isotopes": ["Se-74", "Se-76", "Se-77", "Se-78", "Se-80", "Se-82"],
+  "spectra": {
+    "emission": [5.0e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Br": {
+  "element": "Bromine",
+  "symbol": "Br",
+  "atomicNumber": 35,
+  "category": "Divergent",
+  "behavior": "Divergent lever",
+  "notes": "Volatile liquid halogen, destabilizer",
+  "atomicMass": 79.904,
+  "isotopes": ["Br-79", "Br-81"],
+  "spectra": {
+    "emission": [],
+    "absorption": [589e-9],
+    "references": []
+  }
+},
+"Kr": {
+  "element": "Krypton",
+  "symbol": "Kr",
+  "atomicNumber": 36,
+  "category": "Neutral",
+  "behavior": "Inert neutral",
+  "notes": "Noble gas, minimal resonance",
+  "atomicMass": 83.798,
+  "isotopes": ["Kr-78", "Kr-80", "Kr-82", "Kr-83", "Kr-84", "Kr-86"],
+  "spectra": {
+    "emission": [5.0e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+
+},
+"Rb": {
+  "element": "Rubidium",
+  "symbol": "Rb",
+  "atomicNumber": 37,
+  "category": "Offset",
+  "behavior": "Highly reactive offset",
+  "notes": "Alkali metal, ion transporter mimic",
+  "atomicMass": 85.468,
+  "isotopes": ["Rb-85", "Rb-87"],
+  "spectra": {
+    "emission": [3.8e14],
+    "absorption": [780e-9, 795e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Sr": {
+  "element": "Strontium",
+  "symbol": "Sr",
+  "atomicNumber": 38,
+  "category": "Return",
+  "behavior": "Return stabilizer",
+  "notes": "Biological calcium mimic, stabilizer in bone",
+  "atomicMass": 87.62,
+  "isotopes": ["Sr-84", "Sr-86", "Sr-87", "Sr-88"],
+  "spectra": {
+    "emission": [4.2e14],
+    "absorption": [460e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Y": {
+  "element": "Yttrium",
+  "symbol": "Y",
+  "atomicNumber": 39,
+  "category": "Offset",
+  "behavior": "Transition offset",
+  "notes": "Used in phosphors and superconductors",
+  "atomicMass": 88.906,
+  "isotopes": ["Y-89"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Zr": {
+  "element": "Zirconium",
+  "symbol": "Zr",
+  "atomicNumber": 40,
+  "category": "Offset",
+  "behavior": "Resonance stabilizer",
+  "notes": "Corrosion-resistant, biocompatible",
+  "atomicMass": 91.224,
+  "isotopes": ["Zr-90", "Zr-91", "Zr-92", "Zr-94", "Zr-96"],
+  "spectra": {
+    "emission": [4.6e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Nb": {
+  "element": "Niobium",
+  "symbol": "Nb",
+  "atomicNumber": 41,
+  "category": "Offset",
+  "behavior": "Reactive offset",
+  "notes": "Superconductor, reactive stabilizer",
+  "atomicMass": 92.906,
+  "isotopes": ["Nb-93"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Mo": {
+  "element": "Molybdenum",
+  "symbol": "Mo",
+  "atomicNumber": 42,
+  "category": "Offset",
+  "behavior": "Catalytic offset",
+  "notes": "Enzyme cofactor, catalytic resonance offset",
+  "atomicMass": 95.95,
+  "isotopes": ["Mo-92", "Mo-94", "Mo-95", "Mo-96", "Mo-97", "Mo-98", "Mo-100"],
+  "spectra": {
+    "emission": [5.0e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Tc": {
+  "element": "Technetium",
+  "symbol": "Tc",
+  "atomicNumber": 43,
+  "category": "Anomaly",
+  "behavior": "Unstable anomaly",
+  "notes": "First artificial element, radioactive",
+  "atomicMass": 98,
+  "isotopes": ["Tc-97", "Tc-98", "Tc-99"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ru": {
+  "element": "Ruthenium",
+  "symbol": "Ru",
+  "atomicNumber": 44,
+  "category": "Offset",
+  "behavior": "Catalytic offset",
+  "notes": "Platinum-group, catalytic reactions",
+  "atomicMass": 101.07,
+  "isotopes": ["Ru-96", "Ru-98", "Ru-99", "Ru-100", "Ru-101", "Ru-102", "Ru-104"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Rh": {
+  "element": "Rhodium",
+  "symbol": "Rh",
+  "atomicNumber": 45,
+  "category": "Offset",
+  "behavior": "Catalytic offset",
+  "notes": "Catalyst in emissions control",
+  "atomicMass": 102.906,
+  "isotopes": ["Rh-103"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pd": {
+  "element": "Palladium",
+  "symbol": "Pd",
+  "atomicNumber": 46,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Catalyst, hydrogen absorption",
+  "atomicMass": 106.42,
+  "isotopes": ["Pd-102", "Pd-104", "Pd-105", "Pd-106", "Pd-108", "Pd-110"],
+  "spectra": {
+    "emission": [5.1e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ag": {
+  "element": "Silver",
+  "symbol": "Ag",
+  "atomicNumber": 47,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "High conductivity, resonance anchor",
+  "atomicMass": 107.868,
+  "isotopes": ["Ag-107", "Ag-109"],
+  "spectra": {
+    "emission": [5.3e14],
+    "absorption": [328e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Cd": {
+  "element": "Cadmium",
+  "symbol": "Cd",
+  "atomicNumber": 48,
+  "category": "Offset",
+  "behavior": "Toxic offset",
+  "notes": "Toxic disruptor, resonance offset",
+  "atomicMass": 112.414,
+  "isotopes": ["Cd-106", "Cd-108", "Cd-110", "Cd-111", "Cd-112", "Cd-113", "Cd-114", "Cd-116"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"In": {
+  "element": "Indium",
+  "symbol": "In",
+  "atomicNumber": 49,
+  "category": "Offset",
+  "behavior": "Semiconducting offset",
+  "notes": "Used in electronics and LCDs",
+  "atomicMass": 114.818,
+  "isotopes": ["In-113", "In-115"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Sn": {
+  "element": "Tin",
+  "symbol": "Sn",
+  "atomicNumber": 50,
+  "category": "Offset",
+  "behavior": "Resonance offset",
+  "notes": "Alloy stabilizer, resonance offset",
+  "atomicMass": 118.710,
+  "isotopes": ["Sn-112", "Sn-114", "Sn-115", "Sn-116", "Sn-117", "Sn-118", "Sn-119", "Sn-120", "Sn-122", "Sn-124"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Sb": {
+  "element": "Antimony",
+  "symbol": "Sb",
+  "atomicNumber": 51,
+  "category": "Offset",
+  "behavior": "Metalloid offset",
+  "notes": "Semiconducting properties, toxic disruptor",
+  "atomicMass": 121.760,
+  "isotopes": ["Sb-121", "Sb-123"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Te": {
+  "element": "Tellurium",
+  "symbol": "Te",
+  "atomicNumber": 52,
+  "category": "Offset",
+  "behavior": "Photoreactive offset",
+  "notes": "Semiconductor, resonance offset",
+  "atomicMass": 127.60,
+  "isotopes": ["Te-120", "Te-122", "Te-123", "Te-124", "Te-125", "Te-126", "Te-128", "Te-130"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"I": {
+  "element": "Iodine",
+  "symbol": "I",
+  "atomicNumber": 53,
+  "category": "Return",
+  "behavior": "Return stabilizer",
+  "notes": "Halogen, biological stabilizer (thyroid)",
+  "atomicMass": 126.904,
+  "isotopes": ["I-127"],
+  "spectra": {
+    "emission": [5.2e14],
+    "absorption": [589e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Xe": {
+  "element": "Xenon",
+  "symbol": "Xe",
+  "atomicNumber": 54,
+  "category": "Neutral",
+  "behavior": "Inert neutral",
+  "notes": "Noble gas, anesthetic properties",
+  "atomicMass": 131.293,
+  "isotopes": ["Xe-124", "Xe-126", "Xe-128", "Xe-129", "Xe-130", "Xe-131", "Xe-132", "Xe-134", "Xe-136"],
+  "spectra": {
+    "emission": [5.0e14],
+    "absorption": [],
+    "references": ["NIST ASD"]
+  }
+},
+  "Cs": {
+  "element": "Cesium",
+  "symbol": "Cs",
+  "atomicNumber": 55,
+  "category": "Offset",
+  "behavior": "Reactive offset",
+  "notes": "Extremely reactive alkali metal, resonance destabilizer",
+  "atomicMass": 132.905,
+  "isotopes": ["Cs-133"],
+  "spectra": {
+    "emission": [3.9e14],
+    "absorption": [852e-9, 894e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Ba": {
+  "element": "Barium",
+  "symbol": "Ba",
+  "atomicNumber": 56,
+  "category": "Return",
+  "behavior": "Return stabilizer",
+  "notes": "Alkaline earth, stabilizer in biological systems",
+  "atomicMass": 137.327,
+  "isotopes": ["Ba-130", "Ba-132", "Ba-134", "Ba-135", "Ba-136", "Ba-137", "Ba-138"],
+  "spectra": {
+    "emission": [4.0e14],
+    "absorption": [455e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"La": {
+  "element": "Lanthanum",
+  "symbol": "La",
+  "atomicNumber": 57,
+  "category": "Offset",
+  "behavior": "Lanthanide offset",
+  "notes": "First lanthanide, used in optics and catalysts",
+  "atomicMass": 138.905,
+  "isotopes": ["La-138", "La-139"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ce": {
+  "element": "Cerium",
+  "symbol": "Ce",
+  "atomicNumber": 58,
+  "category": "Offset",
+  "behavior": "Oxidative offset",
+  "notes": "Common lanthanide, catalytic properties",
+  "atomicMass": 140.116,
+  "isotopes": ["Ce-136", "Ce-138", "Ce-140", "Ce-142"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pr": {
+  "element": "Praseodymium",
+  "symbol": "Pr",
+  "atomicNumber": 59,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Lanthanide, strong magnetic properties",
+  "atomicMass": 140.908,
+  "isotopes": ["Pr-141"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Nd": {
+  "element": "Neodymium",
+  "symbol": "Nd",
+  "atomicNumber": 60,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Powerful magnets, laser materials",
+  "atomicMass": 144.242,
+  "isotopes": ["Nd-142", "Nd-143", "Nd-144", "Nd-145", "Nd-146", "Nd-148", "Nd-150"],
+  "spectra": {
+    "emission": [4.3e14],
+    "absorption": [580e-9, 740e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Pm": {
+  "element": "Promethium",
+  "symbol": "Pm",
+  "atomicNumber": 61,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "No stable isotopes, rare and unstable",
+  "atomicMass": 145,
+  "isotopes": ["Pm-145", "Pm-147"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Sm": {
+  "element": "Samarium",
+  "symbol": "Sm",
+  "atomicNumber": 62,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Permanent magnets, neutron absorber",
+  "atomicMass": 150.36,
+  "isotopes": ["Sm-144", "Sm-147", "Sm-148", "Sm-149", "Sm-150", "Sm-152", "Sm-154"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Eu": {
+  "element": "Europium",
+  "symbol": "Eu",
+  "atomicNumber": 63,
+  "category": "Return",
+  "behavior": "Return stabilizer",
+  "notes": "Phosphors, resonance return stabilizer",
+  "atomicMass": 151.964,
+  "isotopes": ["Eu-151", "Eu-153"],
+  "spectra": {
+    "emission": [4.5e14],
+    "absorption": [],
+    "references": []
+  }
+},
+"Gd": {
+  "element": "Gadolinium",
+  "symbol": "Gd",
+  "atomicNumber": 64,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "MRI contrast, neutron absorber",
+  "atomicMass": 157.25,
+  "isotopes": ["Gd-152", "Gd-154", "Gd-155", "Gd-156", "Gd-157", "Gd-158", "Gd-160"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Tb": {
+  "element": "Terbium",
+  "symbol": "Tb",
+  "atomicNumber": 65,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Green phosphors, alloys",
+  "atomicMass": 158.925,
+  "isotopes": ["Tb-159"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Dy": {
+  "element": "Dysprosium",
+  "symbol": "Dy",
+  "atomicNumber": 66,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Strong magnetic properties",
+  "atomicMass": 162.500,
+  "isotopes": ["Dy-156", "Dy-158", "Dy-160", "Dy-161", "Dy-162", "Dy-163", "Dy-164"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ho": {
+  "element": "Holmium",
+  "symbol": "Ho",
+  "atomicNumber": 67,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Highest magnetic strength per atom",
+  "atomicMass": 164.930,
+  "isotopes": ["Ho-165"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Er": {
+  "element": "Erbium",
+  "symbol": "Er",
+  "atomicNumber": 68,
+  "category": "Offset",
+  "behavior": "Optical offset",
+  "notes": "Telecom fiber optics",
+  "atomicMass": 167.259,
+  "isotopes": ["Er-162", "Er-164", "Er-166", "Er-167", "Er-168", "Er-170"],
+  "spectra": {
+    "emission": [6.0e14],
+    "absorption": [1550e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Tm": {
+  "element": "Thulium",
+  "symbol": "Tm",
+  "atomicNumber": 69,
+  "category": "Offset",
+  "behavior": "Magnetic offset",
+  "notes": "Lasers, resonance offset",
+  "atomicMass": 168.934,
+  "isotopes": ["Tm-169"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Yb": {
+  "element": "Ytterbium",
+  "symbol": "Yb",
+  "atomicNumber": 70,
+  "category": "Offset",
+  "behavior": "Optical offset",
+  "notes": "Atomic clocks, lasers",
+  "atomicMass": 173.045,
+  "isotopes": ["Yb-168", "Yb-170", "Yb-171", "Yb-172", "Yb-173", "Yb-174", "Yb-176"],
+  "spectra": {
+    "emission": [5.8e14],
+    "absorption": [556e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Lu": {
+  "element": "Lutetium",
+  "symbol": "Lu",
+  "atomicNumber": 71,
+  "category": "Offset",
+  "behavior": "Heavy lanthanide offset",
+  "notes": "Catalysts, resonance offset",
+  "atomicMass": 174.966,
+  "isotopes": ["Lu-175", "Lu-176"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Hf": {
+  "element": "Hafnium",
+  "symbol": "Hf",
+  "atomicNumber": 72,
+  "category": "Offset",
+  "behavior": "Neutron absorber",
+  "notes": "Nuclear control rods",
+  "atomicMass": 178.49,
+  "isotopes": ["Hf-174", "Hf-176", "Hf-177", "Hf-178", "Hf-179", "Hf-180"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ta": {
+  "element": "Tantalum",
+  "symbol": "Ta",
+  "atomicNumber": 73,
+  "category": "Offset",
+  "behavior": "Corrosion-resistant offset",
+  "notes": "Implants, resonance offset",
+  "atomicMass": 180.948,
+  "isotopes": ["Ta-180m", "Ta-181"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"W": {
+  "element": "Tungsten",
+  "symbol": "W",
+  "atomicNumber": 74,
+  "category": "Offset",
+  "behavior": "High-density offset",
+  "notes": "Filaments, resonance offset",
+  "atomicMass": 183.84,
+  "isotopes": ["W-180", "W-182", "W-183", "W-184", "W-186"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Re": {
+  "element": "Rhenium",
+  "symbol": "Re",
+  "atomicNumber": 75,
+  "category": "Offset",
+  "behavior": "Dense offset",
+  "notes": "Superalloys, rare element",
+  "atomicMass": 186.207,
+  "isotopes": ["Re-185", "Re-187"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Os": {
+  "element": "Osmium",
+  "symbol": "Os",
+  "atomicNumber": 76,
+  "category": "Offset",
+  "behavior": "Dense offset",
+  "notes": "Densest element, resonance offset",
+  "atomicMass": 190.23,
+  "isotopes": ["Os-184", "Os-187", "Os-188", "Os-189", "Os-190", "Os-192"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ir": {
+  "element": "Iridium",
+  "symbol": "Ir",
+  "atomicNumber": 77,
+  "category": "Offset",
+  "behavior": "Dense offset",
+  "notes": "High corrosion resistance, catalytic offset",
+  "atomicMass": 192.217,
+  "isotopes": ["Ir-191", "Ir-193"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pt": {
+  "element": "Platinum",
+  "symbol": "Pt",
+  "atomicNumber": 78,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Catalyst, resonance anchor",
+  "atomicMass": 195.084,
+  "isotopes": ["Pt-190", "Pt-192", "Pt-194", "Pt-195", "Pt-196", "Pt-198"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Au": {
+  "element": "Gold",
+  "symbol": "Au",
+  "atomicNumber": 79,
+  "category": "Attractor",
+  "behavior": "Convergent anchor",
+  "notes": "Noble metal, resonance anchor",
+  "atomicMass": 196.967,
+  "isotopes": ["Au-197"],
+  "spectra": {
+    "emission": [5.2e14],
+    "absorption": [520e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Hg": {
+  "element": "Mercury",
+  "symbol": "Hg",
+  "atomicNumber": 80,
+  "category": "Offset",
+  "behavior": "Liquid offset",
+  "notes": "Only liquid metal at room temp, toxic offset",
+  "atomicMass": 200.592,
+  "isotopes": ["Hg-196", "Hg-198", "Hg-199", "Hg-200", "Hg-201", "Hg-202", "Hg-204"],
+  "spectra": {
+    "emission": [4.9e14],
+    "absorption": [254e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Tl": {
+  "element": "Thallium",
+  "symbol": "Tl",
+  "atomicNumber": 81,
+  "category": "Offset",
+  "behavior": "Toxic offset",
+  "notes": "Very toxic, resonance disruptor",
+  "atomicMass": 204.38,
+  "isotopes": ["Tl-203", "Tl-205"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pb": {
+  "element": "Lead",
+  "symbol": "Pb",
+  "atomicNumber": 82,
+  "category": "Anomaly",
+  "behavior": "Heavy anomaly",
+  "notes": "Toxic heavy metal, resonance anomaly",
+  "atomicMass": 207.2,
+  "isotopes": ["Pb-204", "Pb-206", "Pb-207", "Pb-208"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Bi": {
+  "element": "Bismuth",
+  "symbol": "Bi",
+  "atomicNumber": 83,
+  "category": "Offset",
+  "behavior": "Heavy offset",
+  "notes": "Less toxic, resonance offset",
+  "atomicMass": 208.980,
+  "isotopes": ["Bi-209"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Po": {
+  "element": "Polonium",
+  "symbol": "Po",
+  "atomicNumber": 84,
+  "category": "Offset",
+  "behavior": "Radioactive offset",
+  "notes": "Very radioactive, resonance offset",
+  "atomicMass": 209,
+  "isotopes": ["Po-209"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"At": {
+  "element": "Astatine",
+  "symbol": "At",
+  "atomicNumber": 85,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Halogen, extremely rare and unstable",
+  "atomicMass": 210,
+  "isotopes": ["At-210"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Rn": {
+  "element": "Radon",
+  "symbol": "Rn",
+  "atomicNumber": 86,
+  "category": "Neutral",
+  "behavior": "Noble gas neutral",
+  "notes": "Radioactive noble gas, decay product of uranium",
+  "atomicMass": 222,
+  "isotopes": ["Rn-222"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Fr": {
+  "element": "Francium",
+  "symbol": "Fr",
+  "atomicNumber": 87,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Most unstable alkali metal, extremely rare",
+  "atomicMass": 223,
+  "isotopes": ["Fr-223"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ra": {
+  "element": "Radium",
+  "symbol": "Ra",
+  "atomicNumber": 88,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Highly radioactive alkaline earth",
+  "atomicMass": 226,
+  "isotopes": ["Ra-226"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ac": {
+  "element": "Actinium",
+  "symbol": "Ac",
+  "atomicNumber": 89,
+  "category": "Offset",
+  "behavior": "Radioactive offset",
+  "notes": "First actinide, strong alpha emitter",
+  "atomicMass": 227,
+  "isotopes": ["Ac-227"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Th": {
+  "element": "Thorium",
+  "symbol": "Th",
+  "atomicNumber": 90,
+  "category": "Offset",
+  "behavior": "Radioactive offset",
+  "notes": "Nuclear fuel potential",
+  "atomicMass": 232.038,
+  "isotopes": ["Th-232"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pa": {
+  "element": "Protactinium",
+  "symbol": "Pa",
+  "atomicNumber": 91,
+  "category": "Offset",
+  "behavior": "Radioactive offset",
+  "notes": "Rare, highly radioactive actinide",
+  "atomicMass": 231.036,
+  "isotopes": ["Pa-231"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"U": {
+  "element": "Uranium",
+  "symbol": "U",
+  "atomicNumber": 92,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Nuclear fuel, fissile isotopes",
+  "atomicMass": 238.029,
+  "isotopes": ["U-235", "U-238"],
+  "spectra": {
+    "emission": [],
+    "absorption": [405e-9],
+    "references": ["NIST ASD"]
+  }
+},
+"Np": {
+  "element": "Neptunium",
+  "symbol": "Np",
+  "atomicNumber": 93,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "First transuranic element",
+  "atomicMass": 237,
+  "isotopes": ["Np-237"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Pu": {
+  "element": "Plutonium",
+  "symbol": "Pu",
+  "atomicNumber": 94,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Nuclear fuel, highly unstable",
+  "atomicMass": 244,
+  "isotopes": ["Pu-239", "Pu-240", "Pu-241"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Am": {
+  "element": "Americium",
+  "symbol": "Am",
+  "atomicNumber": 95,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Smoke detectors, synthetic actinide",
+  "atomicMass": 243,
+  "isotopes": ["Am-241", "Am-243"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Cm": {
+  "element": "Curium",
+  "symbol": "Cm",
+  "atomicNumber": 96,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic actinide, strong alpha emitter",
+  "atomicMass": 247,
+  "isotopes": ["Cm-244"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Bk": {
+  "element": "Berkelium",
+  "symbol": "Bk",
+  "atomicNumber": 97,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic actinide",
+  "atomicMass": 247,
+  "isotopes": ["Bk-247"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Cf": {
+  "element": "Californium",
+  "symbol": "Cf",
+  "atomicNumber": 98,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Neutron emitter, used in industry",
+  "atomicMass": 251,
+  "isotopes": ["Cf-252"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Es": {
+  "element": "Einsteinium",
+  "symbol": "Es",
+  "atomicNumber": 99,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic, highly unstable",
+  "atomicMass": 252,
+  "isotopes": ["Es-253"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Fm": {
+  "element": "Fermium",
+  "symbol": "Fm",
+  "atomicNumber": 100,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic actinide, very short-lived",
+  "atomicMass": 257,
+  "isotopes": ["Fm-257"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Md": {
+  "element": "Mendelevium",
+  "symbol": "Md",
+  "atomicNumber": 101,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic, first element discovered atom-by-atom",
+  "atomicMass": 258,
+  "isotopes": ["Md-258"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"No": {
+  "element": "Nobelium",
+  "symbol": "No",
+  "atomicNumber": 102,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic actinide",
+  "atomicMass": 259,
+  "isotopes": ["No-259"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Lr": {
+  "element": "Lawrencium",
+  "symbol": "Lr",
+  "atomicNumber": 103,
+  "category": "Anomaly",
+  "behavior": "Radioactive anomaly",
+  "notes": "Synthetic actinide, unstable",
+  "atomicMass": 262,
+  "isotopes": ["Lr-262"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Rf": {
+  "element": "Rutherfordium",
+  "symbol": "Rf",
+  "atomicNumber": 104,
+  "category": "Offset",
+  "behavior": "Synthetic offset",
+  "notes": "Short-lived, transition metal behavior",
+  "atomicMass": 267,
+  "isotopes": ["Rf-267"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Db": {
+  "element": "Dubnium",
+  "symbol": "Db",
+  "atomicNumber": 105,
+  "category": "Offset",
+  "behavior": "Synthetic offset",
+  "notes": "Unstable, transition metal analog",
+  "atomicMass": 270,
+  "isotopes": ["Db-270"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Sg": {
+  "element": "Seaborgium",
+  "symbol": "Sg",
+  "atomicNumber": 106,
+  "category": "Offset",
+  "behavior": "Synthetic offset",
+  "notes": "Short-lived, resonance unknown",
+  "atomicMass": 271,
+  "isotopes": ["Sg-271"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Bh": {
+  "element": "Bohrium",
+  "symbol": "Bh",
+  "atomicNumber": 107,
+  "category": "Offset",
+  "behavior": "Synthetic offset",
+  "notes": "Short-lived, resonance unknown",
+  "atomicMass": 270,
+  "isotopes": ["Bh-270"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Hs": {
+  "element": "Hassium",
+  "symbol": "Hs",
+  "atomicNumber": 108,
+  "category": "Offset",
+  "behavior": "Synthetic offset",
+  "notes": "Short-lived, resonance unknown",
+  "atomicMass": 277,
+  "isotopes": ["Hs-277"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Mt": {
+  "element": "Meitnerium",
+  "symbol": "Mt",
+  "atomicNumber": 109,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Short-lived, resonance anomaly",
+  "atomicMass": 278,
+  "isotopes": ["Mt-278"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ds": {
+  "element": "Darmstadtium",
+  "symbol": "Ds",
+  "atomicNumber": 110,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Short-lived, resonance anomaly",
+  "atomicMass": 281,
+  "isotopes": ["Ds-281"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Rg": {
+  "element": "Roentgenium",
+  "symbol": "Rg",
+  "atomicNumber": 111,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Short-lived, resonance anomaly",
+  "atomicMass": 282,
+  "isotopes": ["Rg-282"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Cn": {
+  "element": "Copernicium",
+  "symbol": "Cn",
+  "atomicNumber": 112,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Unstable, possibly noble-gas-like",
+  "atomicMass": 285,
+  "isotopes": ["Cn-285"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Nh": {
+  "element": "Nihonium",
+  "symbol": "Nh",
+  "atomicNumber": 113,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Unstable, resonance anomaly",
+  "atomicMass": 286,
+  "isotopes": ["Nh-286"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Fl": {
+  "element": "Flerovium",
+  "symbol": "Fl",
+  "atomicNumber": 114,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Unstable, resonance anomaly",
+  "atomicMass": 289,
+  "isotopes": ["Fl-289"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Mc": {
+  "element": "Moscovium",
+  "symbol": "Mc",
+  "atomicNumber": 115,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Unstable, resonance anomaly",
+  "atomicMass": 290,
+  "isotopes": ["Mc-290"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Lv": {
+  "element": "Livermorium",
+  "symbol": "Lv",
+  "atomicNumber": 116,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Unstable, resonance anomaly",
+  "atomicMass": 293,
+  "isotopes": ["Lv-293"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Ts": {
+  "element": "Tennessine",
+  "symbol": "Ts",
+  "atomicNumber": 117,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Halogen group, but unstable",
+  "atomicMass": 294,
+  "isotopes": ["Ts-294"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+},
+"Og": {
+  "element": "Oganesson",
+  "symbol": "Og",
+  "atomicNumber": 118,
+  "category": "Anomaly",
+  "behavior": "Synthetic anomaly",
+  "notes": "Heaviest noble gas, extremely unstable",
+  "atomicMass": 294,
+  "isotopes": ["Og-294"],
+  "spectra": {
+    "emission": [],
+    "absorption": [],
+    "references": []
+  }
+}
+
+  }
+]
