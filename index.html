@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QCore Resonance Emulator</title>
+  <style>
+    /* ── Reset & base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d1117;
+      --surface:   #161b22;
+      --surface2:  #1f2937;
+      --border:    #30363d;
+      --accent:    #58a6ff;
+      --accent2:   #7ee787;
+      --warn:      #f0883e;
+      --text:      #c9d1d9;
+      --text-dim:  #8b949e;
+      --radius:    8px;
+      --mono:      "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ───────────────────────────────────────────── */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    header svg { flex-shrink: 0; }
+    header h1 { font-size: 1.25rem; color: var(--accent); letter-spacing: 0.5px; }
+    header p  { font-size: .8rem; color: var(--text-dim); margin-top: 2px; }
+
+    /* ── Layout ───────────────────────────────────────────── */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(280px, 360px) 1fr;
+      gap: 0;
+    }
+
+    aside {
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .panel { padding: 20px; overflow-y: auto; }
+
+    /* ── Section titles ───────────────────────────────────── */
+    .section-title {
+      font-size: .72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    /* ── Cards ────────────────────────────────────────────── */
+    .card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    /* ── Form controls ────────────────────────────────────── */
+    label {
+      display: block;
+      font-size: .82rem;
+      color: var(--text-dim);
+      margin-bottom: 4px;
+      margin-top: 12px;
+    }
+    label:first-of-type { margin-top: 0; }
+
+    input[type="number"],
+    select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      font-size: .9rem;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    input[type="number"]:focus,
+    select:focus { border-color: var(--accent); }
+
+    button {
+      margin-top: 16px;
+      width: 100%;
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+      border-radius: 6px;
+      font-size: .9rem;
+      font-weight: 600;
+      padding: 9px;
+      cursor: pointer;
+      transition: opacity .15s;
+    }
+    button:hover { opacity: .88; }
+
+    /* ── Material presets ─────────────────────────────────── */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .preset-btn {
+      margin: 0;
+      background: var(--surface2);
+      color: var(--accent);
+      border: 1px solid var(--border);
+      font-size: .8rem;
+      font-weight: 500;
+      padding: 7px 6px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    .preset-btn:hover { background: #2d333b; border-color: var(--accent); }
+
+    /* ── Results ──────────────────────────────────────────── */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .result-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .result-label {
+      font-size: .75rem;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .result-value {
+      font-size: 1.3rem;
+      font-weight: 600;
+      font-family: var(--mono);
+      color: var(--accent2);
+    }
+    .result-unit {
+      font-size: .75rem;
+      color: var(--text-dim);
+      margin-top: 2px;
+    }
+
+    /* ── Resonance table ──────────────────────────────────── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .85rem;
+    }
+    th, td {
+      padding: 9px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface2);
+      color: var(--text-dim);
+      font-weight: 600;
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #1a2030; }
+
+    /* ── Canvas chart ─────────────────────────────────────── */
+    canvas {
+      width: 100%;
+      height: 220px;
+      display: block;
+      border-radius: var(--radius);
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    /* ── Badge ────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 12px;
+      background: #1f3a5f;
+      color: var(--accent);
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 700px) {
+      main { grid-template-columns: 1fr; }
+      aside { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <!-- atom icon -->
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="18" cy="18" r="3.5" fill="#58a6ff"/>
+    <ellipse cx="18" cy="18" rx="15" ry="6" stroke="#58a6ff" stroke-width="1.4" fill="none"/>
+    <ellipse cx="18" cy="18" rx="15" ry="6" stroke="#7ee787" stroke-width="1.4" fill="none"
+             transform="rotate(60 18 18)"/>
+    <ellipse cx="18" cy="18" rx="15" ry="6" stroke="#f0883e" stroke-width="1.4" fill="none"
+             transform="rotate(120 18 18)"/>
+  </svg>
+  <div>
+    <h1>QCore Resonance Emulator</h1>
+    <p>Material Physics Calculator &mdash; quantum core resonance analysis</p>
+  </div>
+</header>
+
+<main>
+  <!-- ── Sidebar ────────────────────────────────────────── -->
+  <aside>
+
+    <p class="section-title">Material Presets</p>
+    <div class="preset-grid" id="presets"></div>
+
+    <p class="section-title" style="margin-top:20px">Parameters</p>
+    <div class="card">
+
+      <label for="material">Material</label>
+      <select id="material">
+        <option value="custom">Custom</option>
+      </select>
+
+      <label for="youngsModulus">Young's Modulus (GPa)</label>
+      <input type="number" id="youngsModulus" value="200" min="0.001" step="0.1" />
+
+      <label for="density">Density (kg/m³)</label>
+      <input type="number" id="density" value="7850" min="1" step="10" />
+
+      <label for="length">Sample Length (mm)</label>
+      <input type="number" id="length" value="100" min="0.1" step="1" />
+
+      <label for="diameter">Sample Diameter (mm)</label>
+      <input type="number" id="diameter" value="10" min="0.01" step="0.5" />
+
+      <label for="harmonics">Harmonics (1–12)</label>
+      <input type="number" id="harmonics" value="6" min="1" max="12" step="1" />
+
+      <label for="damping">Damping Ratio ζ</label>
+      <input type="number" id="damping" value="0.01" min="0" max="0.5" step="0.001" />
+
+      <button onclick="calculate()">Calculate Resonance</button>
+    </div>
+  </aside>
+
+  <!-- ── Main panel ─────────────────────────────────────── -->
+  <section class="panel">
+
+    <p class="section-title">Key Results</p>
+    <div class="results-grid" id="keyResults">
+      <div class="result-card">
+        <div class="result-label">Fundamental Frequency</div>
+        <div class="result-value" id="f0">—</div>
+        <div class="result-unit">Hz</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Wave Speed</div>
+        <div class="result-value" id="cL">—</div>
+        <div class="result-unit">m/s</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Q-factor (Quality)</div>
+        <div class="result-value" id="qfactor">—</div>
+        <div class="result-unit">dimensionless</div>
+      </div>
+      <div class="result-card">
+        <div class="result-label">Acoustic Impedance</div>
+        <div class="result-value" id="impedance">—</div>
+        <div class="result-unit">MRayl</div>
+      </div>
+    </div>
+
+    <p class="section-title">Resonance Spectrum</p>
+    <canvas id="spectrumCanvas"></canvas>
+
+    <p class="section-title">Harmonic Modes</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Mode (n)</th>
+            <th>Frequency (Hz)</th>
+            <th>Wavelength (mm)</th>
+            <th>Bandwidth (Hz)</th>
+            <th>Energy Stored (rel.)</th>
+          </tr>
+        </thead>
+        <tbody id="harmonicTable"></tbody>
+      </table>
+    </div>
+
+  </section>
+</main>
+
+<script>
+/* ── Material database ──────────────────────────────────────────────────── */
+const MATERIALS = [
+  { name:"Steel (AISI 1020)",  E:210,   rho:7850,  label:"Steel" },
+  { name:"Aluminum 6061",      E:68.9,  rho:2700,  label:"Aluminum" },
+  { name:"Titanium (Grade 5)", E:113.8, rho:4430,  label:"Titanium" },
+  { name:"Copper",             E:110,   rho:8940,  label:"Copper" },
+  { name:"Silicon",            E:130,   rho:2329,  label:"Silicon" },
+  { name:"Diamond",            E:1050,  rho:3500,  label:"Diamond" },
+  { name:"PMMA (Acrylic)",     E:3.2,   rho:1180,  label:"PMMA" },
+  { name:"Carbon Fibre CF/Ep", E:70,    rho:1600,  label:"CF/Epoxy" },
+  { name:"Fused Silica",       E:73,    rho:2203,  label:"Fused SiO₂" },
+  { name:"Tungsten",           E:411,   rho:19300, label:"Tungsten" },
+];
+
+/* ── Build presets & select ─────────────────────────────────────────────── */
+const presetGrid = document.getElementById("presets");
+const matSelect  = document.getElementById("material");
+
+MATERIALS.forEach((m, i) => {
+  // preset button
+  const btn = document.createElement("button");
+  btn.className = "preset-btn";
+  btn.textContent = m.label;
+  btn.onclick = () => loadMaterial(i);
+  presetGrid.appendChild(btn);
+
+  // select option
+  const opt = document.createElement("option");
+  opt.value = i;
+  opt.textContent = m.name;
+  matSelect.appendChild(opt);
+});
+
+matSelect.addEventListener("change", () => {
+  const v = matSelect.value;
+  if (v !== "custom") loadMaterial(Number(v));
+});
+
+function loadMaterial(i) {
+  const m = MATERIALS[i];
+  document.getElementById("youngsModulus").value = m.E;
+  document.getElementById("density").value = m.rho;
+  matSelect.value = i;
+  calculate();
+}
+
+/* ── Helpers ────────────────────────────────────────────────────────────── */
+function fmt(n, dec = 2) {
+  if (!isFinite(n)) return "N/A";
+  if (n >= 1e9) return (n / 1e9).toFixed(dec) + "G";
+  if (n >= 1e6) return (n / 1e6).toFixed(dec) + "M";
+  if (n >= 1e3) return (n / 1e3).toFixed(dec) + "k";
+  return n.toFixed(dec);
+}
+
+/* ── Core calculation ───────────────────────────────────────────────────── */
+function calculate() {
+  const E_GPa   = parseFloat(document.getElementById("youngsModulus").value);
+  const rho     = parseFloat(document.getElementById("density").value);
+  const L_mm    = parseFloat(document.getElementById("length").value);
+  const d_mm    = parseFloat(document.getElementById("diameter").value);
+  const nMax    = Math.max(1, Math.min(12, parseInt(document.getElementById("harmonics").value)));
+  const zeta    = parseFloat(document.getElementById("damping").value);
+
+  if ([E_GPa, rho, L_mm, d_mm].some(v => !isFinite(v) || v <= 0)) return;
+
+  const E  = E_GPa * 1e9;          // Pa
+  const L  = L_mm  / 1e3;          // m
+  const d  = d_mm  / 1e3;          // m
+
+  // Longitudinal wave speed
+  const cL = Math.sqrt(E / rho);   // m/s
+
+  // Fundamental frequency (free-free rod, longitudinal)
+  const f0 = cL / (2 * L);         // Hz
+
+  // Q-factor
+  const Q  = 1 / (2 * zeta);
+
+  // Acoustic impedance Z = rho * cL  (MRayl = 1e6 kg/(m²·s))
+  const Z  = rho * cL / 1e6;
+
+  // Display key results
+  document.getElementById("f0").textContent        = fmt(f0, 2);
+  document.getElementById("cL").textContent        = fmt(cL, 1);
+  document.getElementById("qfactor").textContent   = fmt(Q, 1);
+  document.getElementById("impedance").textContent = Z.toFixed(3);
+
+  // Build harmonic table
+  const tbody = document.getElementById("harmonicTable");
+  tbody.innerHTML = "";
+  const modes = [];
+  for (let n = 1; n <= nMax; n++) {
+    const fn  = n * f0;
+    const lam = 2 * L / n * 1e3; // mm
+    const bw  = fn / Q;
+    const rel = 1 / (n * n);     // amplitude ~ 1/n for rod
+    modes.push({ n, fn, lam, bw, rel });
+
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td><span class="badge">n = ${n}</span></td>
+      <td style="font-family:var(--mono);color:var(--accent2)">${fmt(fn, 2)}</td>
+      <td style="font-family:var(--mono)">${lam.toFixed(3)}</td>
+      <td style="font-family:var(--mono);color:var(--warn)">${fmt(bw, 2)}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden">
+            <div style="width:${(rel * 100).toFixed(1)}%;height:100%;background:var(--accent);border-radius:3px"></div>
+          </div>
+          <span style="font-size:.78rem;color:var(--text-dim);min-width:38px">${(rel * 100).toFixed(1)}%</span>
+        </div>
+      </td>`;
+    tbody.appendChild(tr);
+  }
+
+  drawSpectrum(modes, f0, Q);
+}
+
+/* ── Canvas spectrum ────────────────────────────────────────────────────── */
+function drawSpectrum(modes, f0, Q) {
+  const canvas = document.getElementById("spectrumCanvas");
+  const dpr    = window.devicePixelRatio || 1;
+  const W      = canvas.clientWidth;
+  const H      = canvas.clientHeight;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  const ctx = canvas.getContext("2d");
+  ctx.scale(dpr, dpr);
+
+  // background
+  ctx.fillStyle = "#1f2937";
+  ctx.fillRect(0, 0, W, H);
+
+  if (!modes.length) return;
+
+  const padL = 54, padR = 16, padT = 16, padB = 36;
+  const fw = W - padL - padR;
+  const fh = H - padT - padB;
+
+  const fMax   = modes[modes.length - 1].fn * 1.15;
+  const xScale = x => padL + (x / fMax) * fw;
+
+  // grid
+  ctx.strokeStyle = "#2d333b";
+  ctx.lineWidth = 1;
+  const nGrid = 5;
+  for (let i = 0; i <= nGrid; i++) {
+    const y = padT + (i / nGrid) * fh;
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(padL + fw, y); ctx.stroke();
+  }
+
+  // Lorentzian peaks
+  const steps = fw * 2;
+  const points = [];
+  for (let p = 0; p <= steps; p++) {
+    const f   = (p / steps) * fMax;
+    let amp = 0;
+    for (const { fn, rel } of modes) {
+      const bw = fn / Q;
+      const hbw = bw / 2;
+      amp += rel / (1 + ((f - fn) / hbw) ** 2);
+    }
+    points.push({ f, amp });
+  }
+  const ampMax = Math.max(...points.map(p => p.amp));
+
+  // Gradient fill
+  const grad = ctx.createLinearGradient(0, padT, 0, padT + fh);
+  grad.addColorStop(0,   "rgba(88,166,255,0.5)");
+  grad.addColorStop(1,   "rgba(88,166,255,0.02)");
+
+  ctx.beginPath();
+  ctx.moveTo(xScale(0), padT + fh);
+  for (const { f, amp } of points) {
+    const x = xScale(f);
+    const y = padT + fh - (amp / ampMax) * fh * 0.9;
+    ctx.lineTo(x, y);
+  }
+  ctx.lineTo(xScale(fMax), padT + fh);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Stroke line
+  ctx.beginPath();
+  ctx.moveTo(xScale(0), padT + fh);
+  for (const { f, amp } of points) {
+    const x = xScale(f);
+    const y = padT + fh - (amp / ampMax) * fh * 0.9;
+    ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = "#58a6ff";
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+
+  // Mode labels
+  ctx.font = "11px " + getComputedStyle(document.body).fontFamily;
+  ctx.textAlign = "center";
+  for (const { fn, n } of modes) {
+    const x = xScale(fn);
+    ctx.strokeStyle = "#f0883e44";
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    ctx.beginPath(); ctx.moveTo(x, padT); ctx.lineTo(x, padT + fh); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#f0883e";
+    ctx.fillText("n=" + n, x, padT + fh + 20);
+  }
+
+  // Axes
+  ctx.strokeStyle = "#30363d";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(padL, padT); ctx.lineTo(padL, padT + fh);
+  ctx.moveTo(padL, padT + fh); ctx.lineTo(padL + fw, padT + fh);
+  ctx.stroke();
+
+  // X-axis labels
+  ctx.fillStyle = "#8b949e";
+  ctx.font = "10px monospace";
+  ctx.textAlign = "center";
+  for (let i = 0; i <= nGrid; i++) {
+    const f = (i / nGrid) * fMax;
+    const x = xScale(f);
+    ctx.fillText(fmt(f, 0) + " Hz", x, padT + fh + 20);
+  }
+
+  // Y-axis label
+  ctx.save();
+  ctx.translate(12, padT + fh / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.textAlign = "center";
+  ctx.fillText("Amplitude (a.u.)", 0, 0);
+  ctx.restore();
+}
+
+/* ── Init ───────────────────────────────────────────────────────────────── */
+loadMaterial(0); // default: Steel
+</script>
+
+</body>
+</html>
