@@ -223,6 +223,7 @@ def evaluate():
         return
 
     lines, states, symbols = [], [], []
+    total_freq = 0.0
     for sym, n in counts.items():
         sym = sym.capitalize()
         info = FREQS.get(sym)
@@ -231,12 +232,14 @@ def evaluate():
             continue
         state = info['state']
         fval = info['f_phi2'] if phi2_var.get() else info['f_std']
-        lines.append(f"{sym} x{n} → {fval:.3e} Hz | State: {state}")
+        contrib = fval * n
+        total_freq += contrib
+        lines.append(f"{sym} x{n} → {fval:.3e} Hz × {n} = {contrib:.3e} Hz | State: {state}")
         states += [state]*n
         symbols += [sym]*n
 
     final = reduce_states(states)
-    final_lbl.config(text=f"Final State: {final}")
+    final_lbl.config(text=f"Final State: {final}  |  Total Resonance: {total_freq:.3e} Hz")
 
     freq_box.delete("1.0", tk.END)
     freq_box.insert(tk.END, "\n".join(lines))
