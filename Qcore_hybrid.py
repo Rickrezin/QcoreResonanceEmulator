@@ -26,7 +26,15 @@ def parse_formula(formula: str) -> Counter:
             while i < len(formula) and formula[i].isdigit():
                 count = count * 10 + int(formula[i])
                 i += 1
-            stack[-1][elem] += max(count, 1)
+            amount = 1
+            if i < len(formula) and formula[i] == '^':
+                i += 1
+                amount = 0
+                while i < len(formula) and formula[i].isdigit():
+                    amount = amount * 10 + int(formula[i])
+                    i += 1
+                amount = max(amount, 1)
+            stack[-1][elem] += max(count, 1) * amount
 
         elif formula[i] in '([{':
             stack.append(Counter())
@@ -44,6 +52,32 @@ def parse_formula(formula: str) -> Counter:
         else:
             i += 1
     return stack[0]
+
+# =============================
+# Reaction Parser (stoichiometric coefficients + amount syntax)
+# e.g. ":2 Fe2O3 + H2^3"
+# =============================
+def parse_reaction(expr: str) -> Counter:
+    total = Counter()
+    terms = re.split(r'\s*\+\s*', expr.strip())
+    for term in terms:
+        term = term.strip()
+        if not term:
+            continue
+        # Check for leading stoichiometric coefficient ":N"
+        m = re.match(r'^:(\d+)\s*(.*)', term)
+        if m:
+            coeff = int(m.group(1))
+            formula = m.group(2).strip()
+        else:
+            coeff = 1
+            formula = term
+        if not formula:
+            continue
+        sub = parse_formula(formula)
+        for elem, cnt in sub.items():
+            total[elem] += cnt * coeff
+    return total
 
 # =============================
 # Load CSVs and Merge
@@ -167,7 +201,7 @@ frm.grid(row=0, column=0)
 
 entry = ttk.Entry(frm, width=40)
 entry.grid(row=0, column=1)
-ttk.Label(frm, text="Formula:").grid(row=0, column=0)
+ttk.Label(frm, text="Formula / Reaction:").grid(row=0, column=0)
 phi2_var = tk.BooleanVar(value=True)
 ttk.Checkbutton(frm, text="Use ϕ²", variable=phi2_var).grid(row=0, column=2)
 
@@ -183,7 +217,7 @@ dest_box.grid(row=4, column=0, columnspan=3)
 def evaluate():
     expr = entry.get().strip()
     try:
-        counts = parse_formula(expr)
+        counts = parse_reaction(expr)
     except Exception as e:
         messagebox.showerror("Parse error", str(e))
         return
