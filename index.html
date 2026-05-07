@@ -329,7 +329,15 @@ function stateTransition(s1, s2) {
   if (s1 === 'NEU') return s2;
   if (s2 === 'NEU') return s1;
   if (s1 === 'ANOM' || s2 === 'ANOM') return 'ANOM';
-  return 'NEU';
+
+  const table = {
+    'CON': { 'CON':'CON', 'DIV':'NEU', 'RET':'CON', 'OFF':'DIV' },
+    'DIV': { 'CON':'NEU', 'DIV':'DIV', 'RET':'CON', 'OFF':'DIV' },
+    'RET': { 'CON':'CON', 'DIV':'CON', 'RET':'CON', 'OFF':'CON' },
+    'OFF': { 'CON':'DIV', 'DIV':'DIV', 'RET':'CON', 'OFF':'DIV' }
+  };
+
+  return table[s1]?.[s2] ?? table[s2]?.[s1] ?? 'NEU';
 }
 
 function reduceStates(states) {
